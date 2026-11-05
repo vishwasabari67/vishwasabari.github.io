@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vishwa S – Information Technology Student & Java Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EDF2F0; --surface:#FFFFFF; --ink:#12303A; --muted:#506A72;
+  --line:#1B7F5C; --accent:#F2B100; --rule:#CBD8D4;
+  color-scheme:light;
+  --display:'Bricolage Grotesque','Trebuchet MS',system-ui,sans-serif;
+  --text:'Newsreader',Georgia,'Times New Roman',serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1B20; --surface:#15272D; --ink:#E6EFEC; --muted:#94ADA7;
+    --line:#3FC795; --accent:#F7C531; --rule:#274048; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1B20; --surface:#15272D; --ink:#E6EFEC; --muted:#94ADA7;
+  --line:#3FC795; --accent:#F7C531; --rule:#274048; color-scheme:dark;
+}
+*{box-sizing:border-box}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:19px;line-height:1.65}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wrap{max-width:860px;margin:0 auto;padding:0 24px}
+
+/* nav */
+nav{display:flex;gap:22px;flex-wrap:wrap;align-items:center;padding:22px 0;font-family:var(--display);font-weight:500;font-size:15px}
+nav a{text-decoration:none;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+nav .sp{flex:1}
+#theme{font:inherit;background:none;border:1px solid var(--rule);color:var(--ink);border-radius:999px;padding:5px 14px;cursor:pointer}
+
+/* hero */
+.hero{padding:56px 0 72px}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(56px,13vw,132px);line-height:.92;letter-spacing:-.04em;margin:0 0 28px}
+.hero h1 span{display:inline-block;background:var(--accent);color:#12303A;padding:0 .12em;border-radius:.12em;margin-left:.06em}
+.hero p{font-size:clamp(21px,3.2vw,27px);max-width:30em;margin:0 0 30px;line-height:1.45}
+.hero .meta{font-family:var(--display);font-size:16px;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px 26px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.btn{font-family:var(--display);font-weight:700;font-size:16px;padding:13px 24px;border-radius:999px;text-decoration:none;border:2px solid var(--ink)}
+.btn.main{background:var(--ink);color:var(--bg)}
+.btn:hover{background:var(--accent);border-color:var(--accent);color:#12303A}
+
+/* sections */
+section{padding:56px 0;border-top:1px solid var(--rule)}
+h2{font-family:var(--display);font-weight:800;font-size:clamp(30px,5vw,44px);letter-spacing:-.025em;margin:0 0 30px;line-height:1.1}
+h3{font-family:var(--display);font-weight:700;font-size:22px;margin:0;line-height:1.25}
+.sub{font-family:var(--display);font-size:15px;color:var(--muted);margin:4px 0 10px}
+p{margin:0 0 12px}
+ul{margin:8px 0 0;padding-left:1.1em}
+li{margin-bottom:6px}
+.about{font-size:22px;max-width:34em}
+
+/* route line: each stop sits on a line, like a transit map */
+.route{position:relative;margin:0;padding:0 0 0 42px;list-style:none}
+.route::before{content:"";position:absolute;left:11px;top:10px;bottom:10px;width:5px;border-radius:3px;background:var(--line)}
+.stop{position:relative;margin:0 0 34px;padding:0}
+.stop:last-child{margin-bottom:0}
+.stop::before{content:"";position:absolute;left:-40px;top:6px;width:19px;height:19px;border-radius:50%;background:var(--bg);border:5px solid var(--line)}
+.stop.hot::before{border-color:var(--accent);background:var(--ink)}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:14px;padding:22px 24px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;padding:0;list-style:none}
+.tags li{margin:0;font-family:var(--display);font-size:14px;font-weight:500;padding:4px 12px;border-radius:999px;border:1px solid var(--line);color:var(--ink)}
+
+/* skills + lists */
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.cols .card h3{font-size:18px;margin-bottom:8px}
+.cols .card p{margin:0}
+dl{margin:0}
+dt{font-family:var(--display);font-weight:700;font-size:18px}
+dd{margin:2px 0 18px}
+
+/* contact */
+.contact a.big{display:block;font-family:var(--display);font-weight:800;font-size:clamp(24px,5.5vw,48px);letter-spacing:-.03em;text-decoration:none;overflow-wrap:anywhere;margin-bottom:8px;border-bottom:4px solid var(--accent);width:fit-content;max-width:100%}
+.contact a.big:hover{background:var(--accent);color:#12303A}
+footer{padding:36px 0 56px;font-family:var(--display);font-size:14px;color:var(--muted)}
+
+/* one orchestrated moment: the route line draws in once */
+@media (prefers-reduced-motion:no-preference){
+  .route::before{transform-origin:top;animation:draw 1.4s ease-out both}
+  @keyframes draw{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+}
+@media (max-width:520px){body{font-size:18px}.card{padding:18px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav aria-label="Main">
+    <a href="#about">About</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#recognition">Recognition</a><a href="#contact">Contact</a>
+    <span class="sp"></span>
+    <button id="theme" type="button" aria-label="Switch colour theme">Theme</button>
+  </nav>
+
+  <header class="hero">
+    <h1>Vishwa<span>S</span></h1>
+    <p>I’m an Information Technology student who builds Java and web applications, from billing systems to privacy-aware navigation.</p>
+    <div class="meta"><span>B.Tech IT, Mepco Schlenk Engineering College</span><span>Madurai, Tamil Nadu</span></div>
+    <div class="cta">
+      <a class="btn main" href="#projects">See my projects</a>
+      <a class="btn" href="mailto:vishwasabari2233@gmail.com">Email me</a>
+    </div>
+  </header>
+
+  <section id="about">
+    <h2>About me</h2>
+    <p class="about">I have a strong base in programming and software development, with hands-on experience from academic projects and coding challenges. I’m looking for opportunities to work on innovative software while I keep growing my technical skills.</p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <ol class="route">
+      <li class="stop hot">
+        <div class="card">
+          <h3>Privacy-Preserving Safe Route Planning</h3>
+          <div class="sub">Crowd-enabled navigation, 2026</div>
+          <p>A MERN navigation platform that uses crowd-sourced data to recommend safe routes without exposing personal details.</p>
+          <ul>
+            <li>Applied regression-based machine learning to evaluate routes.</li>
+            <li>Used RainDrop-optimized threshold refinement to make safety recommendations more accurate.</li>
+          </ul>
+          <ul class="tags"><li>MERN</li><li>Machine learning</li><li>Privacy</li></ul>
+        </div>
+      </li>
+      <li class="stop">
+        <div class="card">
+          <h3>Bike Inventory Management System</h3>
+          <div class="sub">Inventory and billing, 2025</div>
+          <p>An inventory and billing system that manages bike stock and customer transactions.</p>
+          <ul>
+            <li>Built stock tracking, billing and database operations.</li>
+            <li>Stored and managed data with a DBMS back end.</li>
+          </ul>
+          <ul class="tags"><li>C++</li><li>Java</li><li>DBMS</li></ul>
+        </div>
+      </li>
+      <li class="stop">
+        <div class="card">
+          <h3>Deque Using Three Stacks</h3>
+          <div class="sub">Data structures, 2024</div>
+          <p>A double-ended queue built from three stacks, with efficient insertion and deletion at both ends.</p>
+          <ul class="tags"><li>Data structures</li><li>Algorithms</li><li>OOP</li></ul>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section id="experience">
+    <h2>Experience and education</h2>
+    <ol class="route">
+      <li class="stop hot">
+        <h3>Web Development Intern</h3>
+        <div class="sub">Data Alcott Systems, 2026</div>
+        <p>Completed an online internship and built a complete website with HTML, CSS and JavaScript, covering responsive design and interactive features.</p>
+      </li>
+      <li class="stop">
+        <h3>B.Tech in Information Technology</h3>
+        <div class="sub">Mepco Schlenk Engineering College, Sivakasi, 2022 to present</div>
+        <p>CGPA 7.11 through the 6th semester.</p>
+      </li>
+      <li class="stop">
+        <h3>Higher Secondary Education</h3>
+        <div class="sub">Mahatma School, KK Nagar, Madurai, 2021 to 2022</div>
+        <p>Scored 79.33%.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section id="skills">
+    <h2>Skills and certifications</h2>
+    <div class="cols">
+      <div class="card"><h3>Languages</h3><p>Java, SQL</p></div>
+      <div class="card"><h3>Database</h3><p>MySQL</p></div>
+      <div class="card"><h3>Web</h3><p>HTML, CSS, JavaScript, MERN stack</p></div>
+      <div class="card"><h3>Core subjects</h3><p>Data structures and algorithms, object-oriented programming, database management systems</p></div>
+    </div>
+    <dl style="margin-top:34px">
+      <dt>Associate in IT Foundation Skills (Java)</dt><dd>Infosys, 2026</dd>
+      <dt>Database and SQL</dt><dd>Infosys, 2026</dd>
+      <dt>Programming Using Java</dt><dd>Infosys, 2025</dd>
+    </dl>
+  </section>
+
+  <section id="recognition">
+    <h2>Recognition</h2>
+    <div class="cols" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+      <div class="card">
+        <h3>Smart India Hackathon 2026</h3>
+        <div class="sub">Institutional finalist</div>
+        <p>Chosen through the college’s internal competition to represent the institution at the national Smart India Hackathon.</p>
+      </div>
+      <div class="card">
+        <h3>Paper: “Digital Cloning”</h3>
+        <div class="sub">Info Institute of Technology, Coimbatore, 2025</div>
+        <p>Presented the applications and future scope of digital cloning in computing.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Let’s talk</h2>
+    <p>I’m open to internships and software roles. The fastest way to reach me is email or phone.</p>
+    <a class="big" href="mailto:vishwasabari2233@gmail.com">vishwasabari2233@gmail.com</a>
+    <a class="big" href="tel:+919842836018">+91 98428 36018</a>
+    <p style="margin-top:18px;color:var(--muted)">49/1 Annupandi Main Road, Teppakulam, Madurai, Tamil Nadu</p>
+  </section>
+
+  <footer>© 2026 Vishwa S</footer>
+</div>
+<script>
+(function(){
+  var b=document.getElementById('theme'),r=document.documentElement;
+  b.addEventListener('click',function(){
+    var dark=r.getAttribute('data-theme')?r.getAttribute('data-theme')==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+    r.setAttribute('data-theme',dark?'light':'dark');
+  });
+})();
+</script>
+</body>
+</html>
